@@ -2,8 +2,20 @@
 keeping track of stuff
 
 
+No arquivo data_practice_github está a prática referente ao BlackFridayDataHack, promovido pelo analytics vidhia.
 
-Iniciar por:
+
+
+
+
+
+
+
+
+
+
+
+XGB info:
 https://github.com/dmlc/xgboost
 https://xgboost.readthedocs.io/en/latest/
 https://cran.r-project.org/web/packages/xgboost/vignettes/xgboostPresentation.html
