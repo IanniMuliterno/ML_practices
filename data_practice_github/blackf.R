@@ -7,7 +7,7 @@ library(Matrix)
 library(xgboost)
 
 
-setwd("C:\\Users\\Idianni\\Desktop\\Desktop\\data_practice_github\\")
+setwd("..Desktop\\data_practice_github\\")
 
 dt <- fread("train.csv")
 
