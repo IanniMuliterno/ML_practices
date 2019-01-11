@@ -27,3 +27,5 @@ https://xgboost.readthedocs.io/en/latest/R-package/xgboostPresentation.html
 
 Data sets for the fun:
 https://www.analyticsvidhya.com/blog/2018/05/24-ultimate-data-science-projects-to-boost-your-knowledge-and-skills/
+
+Memo : http://www.jucobre.com/paginas/sme0811-analise-de-dados-categorizados
