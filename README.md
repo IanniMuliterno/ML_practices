@@ -1,6 +1,14 @@
 # ML_practices
 keeping track of stuff
 
+brincando com regex :
+https://regexcrossword.com/
+
+curiosidades:
+
+brainf*ck language
+
+
 
 No arquivo data_practice_github está a prática referente ao BlackFridayDataHack, promovido pelo analytics vidhia.
 
