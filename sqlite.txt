@@ -1,58 +1,44 @@
--- write your code in SQLite 3.11.0
--- CREATE TABLE vend(country text, export numeric, import numeric);
+--O objetivo é retornar uma tabela com soma de renda por país para importação e exportação a partir de duas tabelas, uma contendo transações e outra com identificação das lojas e seus paises correspondentes (COM NULL = 0)
 
-CREATE TABLE companies2(name text PRIMARY KEY, country2 text); 
-INSERT INTO companies2 VALUES('Alice s.p.','Wonderland'); 
-INSERT INTO companies2 VALUES('Y-zap','Wonderland'); 
-INSERT INTO companies2 VALUES('Absolute','Mathlands'); 
-INSERT INTO companies2 VALUES('Arcus t.g.','Mathlands'); 
-INSERT INTO companies2 VALUES('Lil Mermaid','Underwater Kingdom'); 
-INSERT INTO companies2 VALUES('none at all','Nothingland');
+CREATE TABLE trades(id text, seller text, buyer text, value numeric);
 
---CREATE TABLE store1(name text PRIMARY KEY, country2 text); 
+INSERT INTO trades values (20121107, 'Lil Mermaid', 'Alice s.p.', 10);
+INSERT INTO trades values (20123112, 'Arcus t.g.', 'Y-zap', 30);
+INSERT INTO trades values (20120125, 'Alice s.p.', 'Arcus t.g.', 100);
+INSERT INTO trades values (20120216, 'Lil Mermaid', 'Absolute', 30);
+INSERT INTO trades values (20120217, 'Lil Mermaid', 'Absolute', 50);
 
-CREATE TABLE store1(id text, seller text, buyer text, value numeric, companies_name text,country text, export numeric);
+CREATE TABLE companies(name text PRIMARY KEY, country text); 
 
+INSERT INTO companies VALUES('Alice s.p.','Wonderland'); 
+INSERT INTO companies VALUES('Y-zap','Wonderland'); 
+INSERT INTO companies VALUES('Absolute','Mathlands'); 
+INSERT INTO companies VALUES('Arcus t.g.','Mathlands'); 
+INSERT INTO companies VALUES('Lil Mermaid','Underwater Kingdom'); 
+INSERT INTO companies VALUES('none at all','Nothingland');
+
+CREATE TABLE store1(country text, export numeric);
 INSERT INTO store1
-SELECT *, sum(value)
+SELECT country, sum(value)
 FROM trades
 LEFT JOIN companies
 ON trades.seller = companies.name
---LEFT JOIN companies2
---ON trades.buyer = companies2.name
 GROUP BY country;
 
-CREATE TABLE store2(id text, seller text, buyer text, value numeric, companies_name text,country text, import numeric);
+CREATE TABLE store2(country text, import numeric);
 
 INSERT INTO store2
-SELECT *, sum(value)
+SELECT country, sum(value)
 FROM trades
-LEFT JOIN companies2
-ON trades.buyer = companies2.name
-GROUP BY country2;
+LEFT JOIN companies
+ON trades.buyer = companies.name
+GROUP BY country;
 
-CREATE TABLE tmp1(country text, export numeric);
-CREATE TABLE tmp2(country2 text, import numeric);
-
-INSERT INTO tmp1
-SELECT country,export FROM store1;
-
-INSERT INTO tmp2
-SELECT country,import FROM store2;
-
-CREATE TABLE out(country text);
-
-INSERT INTO out VALUES('Wonderland'); 
-INSERT INTO out VALUES('Mathlands'); 
-INSERT INTO out VALUES('Underwater Kingdom'); 
-INSERT INTO out VALUES('Nothingland');
-
---SELECT * FROM tmp2;
-
-SELECT out.country,IFNULL(export,0),IFNULL(import,0)
-FROM out
-LEFT JOIN tmp1
-ON out.country = tmp1.country
-LEFT JOIN tmp2
-ON out.country = tmp2.country2
-ORDER BY out.country;
+SELECT companies.country,IFNULL(export,0),IFNULL(import,0)
+FROM companies
+LEFT JOIN store1
+ON companies.country = store1.country
+LEFT JOIN store2
+ON companies.country = store2.country
+GROUP BY companies.country
+ORDER BY companies.country
