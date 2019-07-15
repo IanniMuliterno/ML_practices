@@ -15,7 +15,7 @@ No arquivo data_practice_github está a prática referente ao BlackFridayDataHac
 
 
 
-
+cases de programação para treinar : https://app.codility.com/programmers/
 
 
 
