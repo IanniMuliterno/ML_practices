@@ -10,6 +10,8 @@ dt <- fread("train.csv")
 gender_sub <- fread("gender_submission.csv")
 out_data <- fread("test.csv")
 
+## EXPLORATORY
+##########################
 glimpse(dt)
 summary(dt$Fare)
 hist(dt$Fare)
@@ -37,8 +39,10 @@ mean(dt[Age < 10]$Survived)
 summary(dt[Age < 10]$Fare)
 
 ggpairs(dt[,-c("PassengerId","Name","Ticket","Cabin","tkt_code")]) # search for multicolinearity
+##############################################
 
-#sub 2 - train model with full set to include cabin, then ticket and both
+
+#sub 2 - finding a way to include cabin and ticket info
 dt[,cab_code:=as.character(str_extract(Cabin, "[A-Z]+"))]
 dt[,tkt_code:=as.character(str_extract(Ticket, "[A-Z]+"))]
 dt[is.na(tkt_code),tkt_code:="other"]
@@ -111,6 +115,7 @@ fwrite(sub_1,"sub_2.csv")
 
 dt[,class_1:= ifelse(Pclass == 1,1,0)]
 out_data[,class_1:= ifelse(Pclass == 1,1,0)]
+out_data[,cab_code:=as.character(str_extract(Cabin, "[A-Z]+"))]
 out_data[,cab_flag := ifelse(cab_code %in% c("F","B"),1,0)]
 
 fit3 <- (glm(Survived ~ Sex+class_1+Age+cab_flag,family = binomial,dt))
@@ -126,4 +131,28 @@ prop.table(table(predito2,dt$Survived))
 predito <- predict(fit3,out_data)
 predito <- unname(predito)
 sub_3 <- out_data[,"PassengerId"][,Survived := ifelse(predito <= 0,0,1)]
+
+
 fwrite(sub_1,"sub_3.csv")
+
+#############################################
+# subs 2 and 3 didn't make a difference in leaderboard position
+# BEING LAZY AND TRYING TO ENSEMBLE THE CURRENT SUBMISSIONS TO TRY TO GET A BETTER SCORE
+
+sub_4 <- merge(sub_1,sub_2,all.x = T, by = "PassengerId")
+sub_4 <- merge(sub_4,sub_3,all.x = T, by = "PassengerId")
+sub_4[is.na(Survived)]  
+sub_4[Survived.x != Survived.y]
+sub_4[Survived.x == Survived.y, final:= Survived.x]
+sub_4[(Survived.x != Survived.y) & is.na(Survived), final := 0]
+sub_4[,aux:=ifelse(!is.na(Survived),Survived.y+Survived.x+Survived,0)]
+sub_4[is.na(final) & aux >= 2, final := 1]
+sub_4[is.na(final), final:= 0]
+sub_4 <- sub_4[,c("PassengerId","final")]  
+sub_4[,Survived:= final]
+sub_4[,final:= NULL]
+
+fwrite(sub_4,"sub_4.csv") # worked; score went from 0.76555 to 0.77511 and I advanced 2397 places on the leaderboard
+  # repeat this with R
+#https://www.kaggle.com/gunesevitan/advanced-feature-engineering-tutorial-with-titanic
+
