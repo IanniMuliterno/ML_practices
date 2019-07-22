@@ -108,7 +108,7 @@ predito <- predict(fit,out_data)
 predito <- round(predito[,2])
 
 sub_2 <- out_data[,"PassengerId"][,Survived := predito]
-fwrite(sub_1,"sub_2.csv")
+fwrite(sub_2,"sub_2.csv")
 ##############################################################
 
 # glm
@@ -133,7 +133,7 @@ predito <- unname(predito)
 sub_3 <- out_data[,"PassengerId"][,Survived := ifelse(predito <= 0,0,1)]
 
 
-fwrite(sub_1,"sub_3.csv")
+fwrite(sub_3,"sub_3.csv")
 
 #############################################
 # subs 2 and 3 didn't make a difference in leaderboard position
