@@ -3,7 +3,7 @@ keeping track of stuff
 
 coisas para lembrar:
 https://artofproblemsolving.com/videos/prealgebra/chapter1/27
-fiveMinuteStats (otimo site)
+fiveMinuteStats (otimo site): https://stephens999.github.io/fiveMinuteStats/index.html
 
 
 brincando com regex :
