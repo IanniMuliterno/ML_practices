@@ -1,6 +1,11 @@
 # ML_practices
 keeping track of stuff
 
+coisas para lembrar:
+https://artofproblemsolving.com/videos/prealgebra/chapter1/27
+fiveMinuteStats (otimo site)
+
+
 brincando com regex :
 https://regexcrossword.com/
 
