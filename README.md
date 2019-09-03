@@ -2,6 +2,13 @@
 keeping track of stuff
 
 coisas para lembrar:
+
+## master courses:
+
+https://datascience.columbia.edu/master-of-science-in-data-science
+
+## Python stuff
+
 Basic Practice:
 
 http://codingbat.com/python
@@ -21,6 +28,8 @@ https://www.reddit.com/r/dailyprogrammer
 A very tricky website with very few hints and touch problems (Not for beginners but still interesting)
 
 http://www.pythonchallenge.com/
+
+## random stuff 
 
 https://artofproblemsolving.com/videos/prealgebra/chapter1/27
 fiveMinuteStats (otimo site): https://stephens999.github.io/fiveMinuteStats/index.html
