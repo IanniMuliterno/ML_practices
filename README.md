@@ -38,6 +38,10 @@ fiveMinuteStats (otimo site): https://stephens999.github.io/fiveMinuteStats/inde
 brincando com regex :
 https://regexcrossword.com/
 
+why is prediction interval wider than expected prediction interval?
+
+https://stats.stackexchange.com/questions/16493/difference-between-confidence-intervals-and-prediction-intervals
+
 curiosidades:
 
 brainf*ck language
