@@ -3,6 +3,13 @@ keeping track of stuff
 
 coisas para lembrar:
 
+## dealing with small sample sizes
+
+https://medium.com/rants-on-machine-learning/what-to-do-with-small-data-d253254d1a89
+http://www.ifp.illinois.edu/~iracohen/publications/precision-ecml04-ColorTR-final.pdf
+https://academic.oup.com/aje/article/180/3/318/2739260
+https://www.sciencedirect.com/science/article/pii/S0305054805001693
+
 ## master courses:
 
 https://datascience.columbia.edu/master-of-science-in-data-science
