@@ -38,18 +38,21 @@ http://www.pythonchallenge.com/
 
 ## random stuff 
 
-https://artofproblemsolving.com/videos/prealgebra/chapter1/27
+- https://artofproblemsolving.com/videos/prealgebra/chapter1/27
 fiveMinuteStats (otimo site): https://stephens999.github.io/fiveMinuteStats/index.html
 
 
-brincando com regex :
+- brincando com regex :
 https://regexcrossword.com/
 
-why is prediction interval wider than expected prediction interval?
+- why is prediction interval wider than expected prediction interval?
 
 https://stats.stackexchange.com/questions/16493/difference-between-confidence-intervals-and-prediction-intervals
 
-curiosidades:
+- Sample size for MBA
+https://www.scitepress.org/papers/2015/55898/55898.pdf
+
+## curiosidades:
 
 brainf*ck language
 
